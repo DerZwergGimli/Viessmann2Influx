@@ -85,7 +85,7 @@ class VMStoInflux:
         except TypeError:
             self.create_influx_device_message(vsm_device)
 
-    def create_influx_device_message(self, vsm_device_sub, idx=""):
+    def create_influx_device_message(self, vsm_device_sub, num=""):
         check = 0
         device_name = str((str(type(vsm_device_sub)).split("."))[-1:])[2:-4]
         function_list_getter = [method for method in dir(type(vsm_device_sub)) if
@@ -96,12 +96,13 @@ class VMStoInflux:
                 try:
                     measurement_name = "viessmann." + device_name + ".Data"
                     tags = {"type": "viessmannDevice", "internal_version": internal_version}
-
+                    if num != "":
+                        tags["count"] = num
                     # Handle with care
                     data = self.convert_datatype(method())
                     if type(data) == list:
                         for idx, data_sub in enumerate(method()):
-                            tags["index"] = idx
+                            tags["number"] = idx
                             data_sub = self.convert_datatype(data_sub)
                             check += self.write_infux_db(
                                 json_influx_template_modular(measurement_name + ".list", tags,
@@ -157,8 +158,10 @@ class VMStoInflux:
 
     def write_infux_db(self, json_inlfux):
         try:
-            self.client_influx.write_points(json_inlfux)
-            return 0
+            if self.client_influx.write_points(json_inlfux):
+                return 0
+            else:
+                return 1
         except Exception as e:
             logger.error("Error while writing to influxDB:" + e.__str__())
             return 1
