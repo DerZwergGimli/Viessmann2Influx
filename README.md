@@ -45,10 +45,47 @@ To use PyViCare 1.x, every user has to register and create their private API key
 Please not that not all previous properties are available in the new API. Missing properties were removed and might be added later if they are available again.
 
 ---
+## DB-Structure
+Influx DB is a Time-Value-Database it stores 'one' value per timestamp.
+An entry contains:
+- measurement(name)
+- tags
+- field(s)
+- timestamp
+
+To explore the db structure and create queries use chronograf. 
+```text
+[heating]                               {influx database}
+|
+|-[viessmann.Device.Info]               {contains system information}
+|-[viessmann.<deviceName>.Data]         {contains data about the device (mostly temperature)}
+|-[viessmann.<deviceName>.Data.dict]    {contains mostly schedule data}
+|-[viessmann.<deviceName>.Data.list]    {contains mostly historic data}
+|-[...]
+[...]
+```
+- Naming
+  - `<deviceName>`: is the device name for example: GazBoiler/GazBurner/HeatingCircuit/...
+- Tags:
+  - `<tag>`: influx db uses tags for structuring
+  - If more than one device exist (see bolow)
+  - You may find more tags than explained here per measurement
+- Types: There are 3 types implemented as shown above 
+   - `[...].Data.<array>`: If existing a `count` tag is places in the measurement tag name
+   - `[...].Data.<array><dict>`: If existing a `count` and `index` tag is places in the measurement tag name
+   - `[...].Data.<array><list>`: If existing a `count` and `number` tag is places in the measurement tag name
+- Data-types:
+  - `<bool>` casted to `<bool>`
+  - `<int>` casted to `<float>`
+  - `<float>` casted to `<float>`
+  - `<str>` casted to `<str>`
+  - `<dict>` casted to `[...].<dict>` see above
+  - `<list>` casted to `[...].<list>` see above
+  
 
 ## Useful Links:
- -  [API-Doc] https://developer.viessmann.com/
- - [Forum] https://www.viessmann-community.com/ 
+- [API-Doc] https://developer.viessmann.com/
+- [Forum] https://www.viessmann-community.com/ 
 
 ## Testing
 - Tested with 'Vitodens 300'
