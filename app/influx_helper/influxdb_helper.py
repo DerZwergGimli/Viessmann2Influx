@@ -1,11 +1,5 @@
-import datetime
-import logging
 from contextlib import suppress
-from time import timezone
-import time
-
 import PyViCare
-import influxdb.exceptions
 from PyViCare.PyViCareUtils import PyViCareNotSupportedFeatureError
 from loguru import logger
 from influxdb import InfluxDBClient

@@ -4,7 +4,7 @@ from PyViCare.PyViCare import PyViCare
 from loguru import logger
 
 # Internals
-import file_helper.file_helper as fileHelper
+from file_helper import file_helper as fileHelper
 from influx_helper.influxdb_helper import VMStoInflux
 
 credentialsFilePath = "./conf/conf.json"

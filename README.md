@@ -3,6 +3,9 @@
 # ViessmannAPI to InfluxDB  - [Converter]
 This library accesses the ViessmannAPI and converts the data to a InfluxDB friendly style.
 
+## Note
+The application itself is in `./app/..`!
+
 ## Requirements:
 - Internet Access (for API)
 - ViessmannAPI (Account and Token)
@@ -10,12 +13,15 @@ This library accesses the ViessmannAPI and converts the data to a InfluxDB frien
 
 ## Setup:
 1. Install Python3 and pip3
-2. Run: `python3 -m venv venv` to create venv
-3. Activate Python-venv
+2. `cd` into `app`
+3. Run: `python3 -m venv venv` to create venv
+   1. This step is optional to install dependecies not system wide
+   2. You can also use the existing `./venv` and continue with `step 4`
+4. Activate Python-venv
    1. Linux: `source venv/bin/activate`
    2. Windows: `venv/bin/activate.ps1` [no tested]
-4. Install Python-Requirements `pip3 install -r requirements.txt`
-5. Configure 'conf' file (in ./conf):
+5. Install Python-Requirements `pip3 install -r requirements.txt`
+6. Configure 'conf' file (in ./conf):
    1. `conf/conf.json`
          1. Copy the file `conf/conf.json.sample` to `conf/conf.json`
          2. Edit the file according to your `ViessmannAPI_Credentials` and `InfluxDB_Server_Config`
