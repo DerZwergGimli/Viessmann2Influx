@@ -12,6 +12,8 @@ RUN apk add bash
 RUN apk add python3 
 RUN apk add py3-pip 
 RUN apk add openrc
+RUN apk add alpine-sdk
+RUN apk add python3-dev
 #RUN apk add cron nano
 #RUN rc-service crond start && rc-update add crond
 
