@@ -10,7 +10,7 @@ chmod +x /runViessmann.sh /watchdog.sh
 # Setup a cron schedule
 echo "SHELL=/bin/bash
 BASH_ENV=/container.env
-*/15 * * * * /runViessmann.sh 2>&1
+*/5 * * * * /runViessmann.sh 2>&1
 * * * * * /watchdog.sh 2>&1
 # This extra line makes it a valid cron" > scheduler.txt
 
