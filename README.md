@@ -2,6 +2,7 @@
 ![v2i_logo](v2i_icon.png)
 # ViessmannAPI to InfluxDB  - [Converter]
 This library accesses the ViessmannAPI and converts the data to a InfluxDB friendly style.
+This project will get a V2!
 
 ## Note
 The application itself is in `./app/..`!
