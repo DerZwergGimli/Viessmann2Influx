@@ -1,8 +1,10 @@
 
 ![v2i_logo](v2i_icon.png)
-# ViessmannAPI to InfluxDB  - [Converter]
+# ViessmannAPI to InfluxDB V2 - [Converter]
 This library accesses the ViessmannAPI and converts the data to a InfluxDB friendly style.
-This project will get a V2!
+
+This is now an updated Version of the previos published one which is even more InfluxDB-friendly and will store all values form ViessmannAPI (but with the Viessmann-Timestamp) - no more 'continous' writes with a current timestamp!
+
 
 ## Note
 The application itself is in `./app/..`!

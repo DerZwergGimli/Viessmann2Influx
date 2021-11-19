@@ -1,14 +1,14 @@
 {
-    "viessmannapi": {
-      "email" : "sample@email.com",
-      "password" : "superpassword",
-      "api_key" : "XXXXXXXXXX"
+  "viessmannapi" : {
+      "email" : "name@mail.com",
+      "password" : "USER",
+      "api_key" : "KEY"
     },
-      "influxdb": {
+  "influxdb": {
         "address": "127.0.0.1",
         "port": 8086,
-        "user": "username",
-        "password": "password",
+        "user": "admin",
+        "password": "admin",
         "database_name": "heating"
     }
 }
